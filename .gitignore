@@ -1,0 +1,24 @@
+### .gitignore
+
+```plaintext
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env
+Jogo da Velha em Python
+
+Descrição: Este projeto consiste na implementação de um jogo da velha (tic-tac-toe) em Python. Dois jogadores jogam alternadamente em um tabuleiro 3x3, tentando alinhar três de suas marcas (X ou O) em uma linha, coluna ou diagonal. O jogo continua até que um jogador vença ou que todas as posições no tabuleiro sejam preenchidas, resultando em um empate.
+
+Instruções:
+
+1. Clone o repositório do projeto.
+2. Abra o terminal e navegue até o diretório do projeto.
+3. Execute o jogo usando Python 3.x.
+4. Siga as instruções no terminal para jogar.
+5. Opcionalmente, crie um fork do projeto e faça melhorias ou adaptações conforme desejar.
+Objetivo: O objetivo deste projeto é praticar conceitos de lógica de programação, manipulação de matrizes, e a criação de jogos interativos em Python.

@@ -1,45 +1,56 @@
-def mostrar_tabuleiro(tabuleiro):
-    for linha in tabuleiro:
+def exibir_tabuleiro(tabuleiro):
+    print()
+    para linha no tabuleiro:
         print(" | ".join(linha))
-        print("-" * 5)
+        print("-" * 9)
+    print()
 
 def verificar_vencedor(tabuleiro, jogador):
-    for linha in tabuleiro:
-        if all([celula == jogador for celula in linha]):
+    para linha no tabuleiro:
+        if all(espaço == jogador para espaço em linha):
             return True
     for col in range(3):
-        if all([tabuleiro[linha][col] == jogador for linha in range(3)]):
+        if all(tabuleiro[linha][col] == jogador para linha in range(3)):
             return True
-    if tabuleiro[0][0] == tabuleiro[1][1] == tabuleiro[2][2] == jogador:
-        return True
-    if tabuleiro[0][2] == tabuleiro[1][1] == tabuleiro[2][0] == jogador:
+    if all(tabuleiro [i][i] == jogador para i no intervalo(3)) ou all(tabuleiro[i][2-i] == jogador para i no intervalo(3)):
         return True
     return False
 
-def jogo_da_velha():
+def verificar_empate(tabuleiro) :
+    return all(espaço != " " for linha in tabuleiro for espaco in linha)
+
+def realizar_jogada(tabuleiro, jogador):
+    while True:
+        try:
+            linha = int(input(f"Jogador {jogador}, escolha a linha (1- 3): ")) - 1
+            coluna = int(input(f"Jogador {jogador}, escolha a coluna (1-3): ")) - 1
+            if tabuleiro[linha][coluna] == " ":
+                tabuleiro[linha][coluna] = jogador
+                break
+            else:
+                print("Espaço já ocupado. Escolha outro.")
+        except (IndexError, ValueError):
+            print("Entrada inválida. Tente novamente.")
+
+def jogar():
     tabuleiro = [[" " for _ in range(3)] for _ in range(3)]
     jogador_atual = "X"
-    for _ in range(9):
-        mostrar_tabuleiro(tabuleiro)       
-        try:
-            linha = int(input(f"Jogador {jogador_atual}, escolha a linha (0, 1, 2): "))
-            coluna = int(input(f"Jogador {jogador_atual}, escolha a coluna (0, 1, 2): "))
-            if linha not in range(3) or coluna not in range(3):
-                print("Linha ou coluna inválida. Tente novamente.")
-                continue
-            if tabuleiro[linha][coluna] == " ":
-                tabuleiro[linha][coluna] = jogador_atual
-                if verificar_vencedor(tabuleiro, jogador_atual):
-                    mostrar_tabuleiro(tabuleiro)
-                    print(f"Jogador {jogador_atual} venceu!")
-                    return
-                jogador_atual = "O" if jogador_atual == "X" else "X"
-            else:
-                print("Posição já ocupada. Tente novamente.")
-        except (ValueError, IndexError):
-            print("Entrada inválida. Tente novamente.")
-    
-    mostrar_tabuleiro(tabuleiro)
-    print("Empate!")
 
-jogo_da_velha()
+    while True:
+        exibir_tabuleiro(tabuleiro)
+        realizar_jogada(tabuleiro, jogador_atual)
+
+        if verificar_vencedor(tabuleiro, jogador_atual):
+            exibir_tabuleiro(tabuleiro)
+            print(f"Jogador {jogador_atual} venceu!\n" )
+            break
+
+        if verificar_empate(tabuleiro):
+            exibir_tabuleiro(tabuleiro)
+            print("O jogo empatou!\n")
+            break
+
+        jogador_atual = "O" if jogador_atual == "X" senão "X"
+
+se __nome__ == "__main__":
+    jogar()

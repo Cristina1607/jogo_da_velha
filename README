@@ -17,7 +17,7 @@ Para jogar, siga os passos abaixo:
 1. Clone este repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/jogo-da-velha.git
+   git clone https://github.com/Cristina1607/jogo-da-velha.git
 2. Navegue até o diretório do projeto:
 cd jogo-da-velha
 3. Execute o script Python:
